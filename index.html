@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<title>Soluna Servis | Pozáruční servis baterií Soluna od BF technology</title>
+<meta name="description" content="Specialisté na pozáruční servis baterií Soluna. Výměny BMS, oživování nefunkčních baterií, upgrady firmware. Bývalý technický support Nanosun s.r.o., součást skupiny BF technology.">
+
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="shortcut icon" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800;900&display=swap">
+
+<style>
+  :root {
+    --bg: #0e1015;
+    --bg-2: #161922;
+    --card: #1d212c;
+    --line: #2a2f3d;
+    --text: #e8ebf2;
+    --text-dim: #9aa3b8;
+    --accent: #f39200;      /* Soluna orange */
+    --accent-2: #ffb547;
+    --accent-soft: rgba(243,146,0,0.12);
+    --max: 1240px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  body {
+    font-family: 'Nunito Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { color: #fff; }
+  img { max-width: 100%; display: block; height: auto; }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  /* LOGO SVG */
+  .logo-svg { color: var(--accent); display: block; height: 48px; width: auto; }
+  .logo-svg .battery-body { fill: none; stroke: currentColor; }
+  .logo-svg .battery-cap, .logo-svg .battery-fill { fill: currentColor; }
+  .logo-svg .word, .logo-svg .tagline { fill: currentColor; }
+  .logo-svg .word.dim { fill: var(--text); }
+  .logo-svg .tagline.dim { fill: var(--text-dim); }
+
+  /* TOP BAR */
+  .topbar {
+    background: #000;
+    color: var(--text-dim);
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .topbar a { color: var(--text-dim); }
+  .topbar a:hover { color: var(--accent-2); }
+  .topbar .contact-mini { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .topbar .social { display: flex; gap: 8px; align-items: center; }
+
+  /* PARENT BRAND BADGE */
+  .parent-brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,0.03);
+    color: var(--text-dim);
+    font-size: 12px;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    transition: border-color .2s;
+  }
+  .parent-brand:hover { border-color: var(--accent); color: var(--text); }
+  .parent-brand img { height: 18px; width: auto; display: block; }
+  .parent-brand .label { font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* HEADER */
+  .site-header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(14, 16, 21, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .row { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+  nav.primary { display: flex; gap: 24px; }
+  nav.primary a {
+    color: var(--text); font-weight: 700; font-size: 14px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    position: relative; padding: 6px 0;
+  }
+  nav.primary a::after {
+    content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 0;
+    background: var(--accent); transition: width .2s ease;
+  }
+  nav.primary a:hover::after { width: 100%; }
+  .header-cta {
+    background: var(--accent); color: #000; font-weight: 800;
+    padding: 10px 18px; border-radius: 4px; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    transition: background .2s; white-space: nowrap;
+  }
+  .header-cta:hover { background: var(--accent-2); color: #000; }
+
+  /* MOBILE HAMBURGER */
+  .hamburger {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    width: 42px; height: 42px;
+    padding: 0;
+    cursor: pointer;
+    color: var(--text);
+    align-items: center;
+    justify-content: center;
+  }
+  .hamburger svg { width: 22px; height: 22px; }
+  .mobile-menu {
+    display: none;
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    padding: 80px 24px 24px;
+    overflow-y: auto;
+  }
+  .mobile-menu.open { display: block; }
+  .mobile-menu .close {
+    position: absolute; top: 18px; right: 18px;
+    width: 42px; height: 42px;
+    background: transparent; border: 1px solid var(--line);
+    border-radius: 6px; color: var(--text); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .mobile-menu a {
+    display: block; padding: 16px 0; font-size: 20px; font-weight: 800;
+    color: var(--text); border-bottom: 1px solid var(--line);
+    text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-menu .cta-mobile {
+    display: inline-block; margin-top: 24px; padding: 14px 24px;
+    background: var(--accent); color: #000; border-radius: 6px;
+    font-weight: 800; text-transform: uppercase;
+    border-bottom: none;
+  }
+  .mobile-menu .parent-brand-mobile {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 32px;
+    padding: 16px 0 0;
+    border-top: 1px solid var(--line);
+    color: var(--text-dim);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .mobile-menu .parent-brand-mobile img { height: 24px; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 80% 30%, rgba(243,146,0,0.18), transparent 60%),
+      linear-gradient(180deg, #0e1015 0%, #0a0c11 100%);
+    padding: 70px 0 50px;
+    overflow: hidden;
+  }
+  .hero-grid { display: grid; grid-template-columns: 0.95fr 1.1fr; gap: 60px; align-items: center; }
+  .hero h1 {
+    font-size: clamp(28px, 4.6vw, 56px);
+    line-height: 1.05; margin: 0 0 22px;
+    font-weight: 900; letter-spacing: -0.5px;
+  }
+  .hero h1 .hl { color: var(--accent); }
+  .hero p.lead {
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: var(--text-dim);
+    max-width: 580px; margin: 0 0 32px;
+  }
+  .hero .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-size: 14px;
+    border: 2px solid transparent;
+    transition: all .2s;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--accent); color: #000; }
+  .btn-primary:hover { background: var(--accent-2); color: #000; }
+  .btn-ghost { border-color: var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-2); }
+
+  /* HERO VISUAL — stylized battery stack */
+  .hero-visual {
+    position: relative;
+    padding: 30px;
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at center, rgba(243,146,0,0.15), transparent 70%);
+  }
+  .battery-stack {
+    display: grid;
+    gap: 14px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .battery-cell {
+    background: linear-gradient(135deg, #1d212c 0%, #11141b 100%);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex; align-items: center; gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .battery-cell::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--accent);
+    opacity: 0.85;
+  }
+  .battery-cell .led {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px rgba(243,146,0,0.7);
+    flex-shrink: 0;
+  }
+  .battery-cell .led.off { background: #2a2f3d; box-shadow: none; }
+  .battery-cell .meta {
+    flex: 1;
+  }
+  .battery-cell .meta b { display: block; font-size: 14px; font-weight: 900; letter-spacing: 0.4px; }
+  .battery-cell .meta span { display: block; font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  .battery-cell .cap {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
+    color: var(--accent); text-transform: uppercase;
+    border: 1px solid rgba(243,146,0,0.4);
+    border-radius: 999px;
+    padding: 3px 10px;
+  }
+  .battery-stack .pbox {
+    background: linear-gradient(135deg, #11141b 0%, #1d212c 100%);
+    border: 1px dashed var(--accent);
+    color: var(--text-dim);
+    text-align: center;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 800;
+  }
+  .battery-stack .pbox b { color: var(--accent); }
+
+  .badge-row {
+    display: inline-flex; gap: 10px; align-items: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    padding: 6px 14px 6px 6px;
+    border-radius: 999px;
+    margin: 0 0 22px;
+    font-size: 13px;
+    color: var(--text-dim);
+    max-width: 100%;
+  }
+  .badge-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(243,146,0,0.18); flex-shrink: 0; }
+  .badge-row strong { color: var(--text); }
+
+  /* STATS */
+  .stats {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 40px 0;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .stat .num {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 900; color: var(--accent); line-height: 1;
+  }
+  .stat .label {
+    color: var(--text-dim); font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-top: 8px;
+  }
+
+  /* SECTION */
+  section.block { padding: 80px 0; }
+  .section-head { text-align: center; margin: 0 auto 50px; max-width: 760px; }
+  .section-head .eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase; margin: 0 0 12px;
+  }
+  .section-head h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.1; margin: 0 0 16px;
+    font-weight: 900; letter-spacing: -0.3px;
+  }
+  .section-head p { color: var(--text-dim); margin: 0; font-size: clamp(15px, 1.6vw, 17px); }
+
+  /* SERVICE CARDS */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease;
+    display: flex; flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card .icon-wrap {
+    background: linear-gradient(135deg, #0e1015 0%, #1d212c 100%);
+    aspect-ratio: 16 / 9;
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--line);
+  }
+  .card .icon-wrap svg { width: 72px; height: 72px; color: var(--accent); }
+  .card .body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+  .card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 900; }
+  .card p { margin: 0 0 18px; color: var(--text-dim); flex: 1; }
+  .card ul.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  .card ul.bullets li {
+    position: relative;
+    padding: 7px 0 7px 22px;
+    border-top: 1px solid var(--line);
+  }
+  .card ul.bullets li:first-child { border-top: none; padding-top: 4px; }
+  .card ul.bullets li::before {
+    content: "";
+    position: absolute; left: 0; top: 14px;
+    width: 12px; height: 2px; background: var(--accent);
+  }
+  .card ul.bullets li:first-child::before { top: 11px; }
+
+  /* MODELS GRID */
+  .models-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .model {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px 26px;
+    display: flex; flex-direction: column;
+    transition: transform .25s, border-color .25s;
+  }
+  .model:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .model .tag {
+    display: inline-block; align-self: flex-start;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(243,146,0,0.35);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  .model h3 { font-size: 22px; font-weight: 900; margin: 0 0 6px; }
+  .model .sub { color: var(--text-dim); font-size: 14px; margin: 0 0 18px; }
+  .model dl { margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: 1fr; gap: 6px; }
+  .model dl .row {
+    display: grid; grid-template-columns: 1fr auto; gap: 14px;
+    padding: 7px 0; border-top: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .model dl .row:first-child { border-top: none; }
+  .model dl dt { color: var(--text-dim); margin: 0; text-transform: uppercase; letter-spacing: 0.6px; font-size: 11px; font-weight: 700; align-self: center; }
+  .model dl dd { margin: 0; color: var(--text); font-weight: 800; font-size: 14px; }
+  .model p.note { margin: auto 0 0; color: var(--text-dim); font-size: 13px; line-height: 1.55; }
+
+  /* PARALLEL BOX FEATURE */
+  .feature-pbox {
+    display: grid; grid-template-columns: 1fr 1.15fr;
+    gap: 56px; align-items: center;
+  }
+  .feature-pbox .eyebrow {
+    color: var(--accent); font-size: 13px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase; margin: 0 0 12px;
+  }
+  .feature-pbox h3 {
+    font-size: clamp(24px, 2.8vw, 36px);
+    line-height: 1.15; margin: 0 0 18px; font-weight: 900;
+  }
+  .feature-pbox h3 span { color: var(--accent); }
+  .feature-pbox p { color: var(--text-dim); font-size: clamp(15px, 1.5vw, 17px); margin: 0 0 14px; }
+  .feature-pbox ul { padding: 0; margin: 18px 0 0; list-style: none; }
+  .feature-pbox ul li { padding: 8px 0 8px 28px; position: relative; color: var(--text); }
+  .feature-pbox ul li::before {
+    content: ""; position: absolute; left: 0; top: 16px;
+    width: 14px; height: 2px; background: var(--accent);
+  }
+
+  /* PBOX schema */
+  .pbox-schema {
+    background: linear-gradient(135deg, #0f1217 0%, #1d212c 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .pbox-schema .pbox-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin: 0 0 14px;
+  }
+  .pbox-schema .pbox-node {
+    background: #11141b; border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px; text-align: center;
+    font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--text-dim);
+  }
+  .pbox-schema .pbox-node b { display: block; color: var(--accent); font-size: 14px; margin-bottom: 2px; letter-spacing: 1.2px; }
+  .pbox-schema .pbox-node.inverter { border-color: rgba(243,146,0,0.5); color: var(--text); }
+  .pbox-schema .pbox-node.parallel {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+  .pbox-schema .pbox-node.parallel b { color: #000; }
+  .pbox-schema .pbox-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  .pbox-schema .spec-table {
+    margin: 22px 0 0;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px;
+    font-size: 13px;
+  }
+  .pbox-schema .spec-table .label { color: var(--text-dim); }
+  .pbox-schema .spec-table .value { color: var(--text); font-weight: 800; text-align: right; }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+  .about-grid h3 { font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; margin: 0 0 18px; font-weight: 900; }
+  .about-grid h3 span { color: var(--accent); }
+  .about-grid p { color: var(--text-dim); font-size: clamp(15px, 1.5vw, 17px); margin: 0 0 14px; }
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .about-card .row {
+    display: grid; grid-template-columns: 48px 1fr; gap: 14px;
+    padding: 14px 0; border-top: 1px solid var(--line);
+  }
+  .about-card .row:first-child { border-top: none; padding-top: 0; }
+  .about-card .row .ico {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .about-card .row b { display: block; font-size: 15px; font-weight: 900; margin-bottom: 4px; }
+  .about-card .row p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+  /* DOCS DOWNLOAD */
+  .docs-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .doc {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+    transition: border-color .2s, transform .2s;
+  }
+  .doc:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .doc .pdf-ico {
+    width: 42px; height: 42px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 11px; flex-shrink: 0;
+    letter-spacing: 0.6px;
+  }
+  .doc .info b { display: block; color: var(--text); font-size: 14px; font-weight: 800; margin-bottom: 4px; line-height: 1.35; }
+  .doc .info span { color: var(--text-dim); font-size: 12px; }
+
+  /* CONTACT FORM */
+  .contact-section {
+    background: linear-gradient(135deg, #0f1217 0%, #211400 100%);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 80px 0;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-aside .eyebrow {
+    color: var(--accent);
+    font-size: 13px; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .contact-aside h2 {
+    font-size: clamp(26px, 3.2vw, 40px);
+    line-height: 1.1;
+    margin: 0 0 18px;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+  }
+  .contact-aside p { color: var(--text-dim); margin: 0 0 28px; font-size: 16px; }
+  .contact-aside .quick {
+    display: grid; gap: 14px;
+    padding: 22px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 12px;
+  }
+  .contact-aside .quick a {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--text); font-weight: 700; font-size: 15px;
+  }
+  .contact-aside .quick a:hover { color: var(--accent-2); }
+  .contact-aside .quick a .ico {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  .contact-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 18px; }
+  .contact-form .field { display: flex; flex-direction: column; }
+  .contact-form .field.full { grid-column: 1 / -1; }
+  .contact-form label {
+    color: var(--text-dim);
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin: 0 0 6px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 12px 14px;
+    font: inherit;
+    font-size: 15px;
+    transition: border-color .15s, background .15s;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(243,146,0,0.05);
+  }
+  .contact-form textarea { resize: vertical; min-height: 130px; }
+  .contact-form .gdpr {
+    color: var(--text-dim);
+    font-size: 12px; line-height: 1.55;
+    margin: 6px 0 18px;
+  }
+  .contact-form .submit-row {
+    grid-column: 1 / -1;
+    display: flex; gap: 14px; flex-wrap: wrap; align-items: center;
+  }
+  .contact-form button[type=submit] {
+    background: var(--accent);
+    color: #000;
+    border: 2px solid var(--accent);
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .contact-form button[type=submit]:hover { background: var(--accent-2); border-color: var(--accent-2); }
+
+  #contact-status {
+    display: none;
+    margin: 0 0 18px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+  }
+  #contact-status.ok { display: block; background: rgba(243,146,0,0.12); color: var(--accent-2); border: 1px solid rgba(243,146,0,0.4); }
+  #contact-status.err { display: block; background: rgba(220,60,40,0.12); color: #ff8a78; border: 1px solid rgba(220,60,40,0.4); }
+
+  /* FOOTER */
+  footer.site {
+    background: #07080b;
+    border-top: 1px solid var(--line);
+    padding: 60px 0 20px;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  footer.site .grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; }
+  footer.site h4 {
+    color: var(--text); font-size: 14px;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin: 0 0 16px;
+  }
+  footer.site a { display: block; padding: 4px 0; color: var(--text-dim); }
+  footer.site a:hover { color: var(--accent-2); }
+  footer.site .parent-block {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+  }
+  footer.site .parent-block .label {
+    display: block; color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 1.2px;
+    font-size: 11px; margin: 0 0 8px;
+  }
+  footer.site .parent-block img { height: 32px; width: auto; }
+  footer.site .copy {
+    border-top: 1px solid var(--line);
+    margin-top: 40px; padding-top: 20px;
+    display: flex; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px; font-size: 13px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    .hero-grid, .feature-pbox, .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-visual { max-width: 520px; margin: 0 auto; }
+    .cards, .models-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    nav.primary { display: none; }
+    .hamburger { display: inline-flex; }
+    .header-cta { display: none; }
+    footer.site .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .topbar { font-size: 12px; padding: 6px 0; }
+    .topbar .row { justify-content: center; }
+    .topbar .contact-mini { gap: 12px; }
+    .parent-brand { display: none; }
+    .cards, .models-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .hero { padding: 36px 0 24px; }
+    section.block { padding: 56px 0; }
+    .logo-svg { height: 38px; }
+    footer.site .grid { grid-template-columns: 1fr; gap: 28px; }
+    footer.site { padding: 40px 0 16px; }
+    .btn { padding: 12px 20px; font-size: 13px; width: 100%; text-align: center; }
+    .hero .cta-row .btn { width: auto; }
+    .contact-form .row { grid-template-columns: 1fr; }
+    .contact-section { padding: 56px 0; }
+    .pbox-schema .spec-table { grid-template-columns: 1fr; gap: 4px; }
+    .pbox-schema .spec-table .value { text-align: left; }
+  }
+  @media (max-width: 380px) {
+    .topbar .contact-mini { flex-direction: column; gap: 4px; align-items: center; }
+    .logo-svg { height: 32px; }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container row">
+    <div class="contact-mini">
+      <span>📞 <a href="tel:+420776111100">+420 776 111 100</a></span>
+      <span>✉ <a href="mailto:info@bftechnology.cz">info@bftechnology.cz</a></span>
+    </div>
+    <a class="parent-brand" href="https://www.bftechnology.cz/" target="_blank" rel="noopener" title="Mateřská firma BF technology s.r.o.">
+      <span class="label">Součást skupiny</span>
+      <img src="assets/bf-technology-logo_final_bile.svg" alt="BF technology s.r.o.">
+    </a>
+    <div class="social">
+      <a href="https://www.instagram.com/bftechnology_sro/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="22" height="22" viewBox="0 0 28 28"><defs><linearGradient id="ig2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs><rect width="28" height="28" rx="7" fill="url(#ig2)"/><rect x="6.5" y="6.5" width="15" height="15" rx="4.5" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="14" cy="14" r="3.6" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="19" cy="9" r="1.1" fill="#fff"/></svg>
+      </a>
+      <a href="https://www.facebook.com/BFtechnologyCZ/" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="22" height="22" viewBox="0 0 28 28"><rect width="28" height="28" rx="7" fill="#1877F2"/><path d="M16.4 14.5h2.3l.4-2.9h-2.7v-1.9c0-.8.2-1.4 1.4-1.4h1.4V5.7c-.3 0-1.2-.1-2.2-.1-2.2 0-3.6 1.3-3.6 3.7v2.3H11v2.9h2.4V22h3z" fill="#fff"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container row">
+    <a href="index.html" class="brand" aria-label="Soluna Servis – domů">
+      <svg class="logo-svg" viewBox="0 0 380 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- battery icon -->
+        <rect class="battery-body" x="10" y="20" width="78" height="50" rx="6" stroke-width="5"/>
+        <rect class="battery-cap" x="88" y="34" width="8" height="22" rx="2"/>
+        <rect class="battery-fill" x="18" y="28" width="20" height="34" rx="2"/>
+        <rect class="battery-fill" x="42" y="28" width="20" height="34" rx="2" opacity="0.6"/>
+        <rect class="battery-fill" x="66" y="28" width="16" height="34" rx="2" opacity="0.3"/>
+        <!-- text -->
+        <text class="word" x="115" y="42" font-family="Nunito Sans, sans-serif" font-weight="900" font-size="26" letter-spacing="1">SOLUNA</text>
+        <text class="word dim" x="115" y="68" font-family="Nunito Sans, sans-serif" font-weight="900" font-size="26" letter-spacing="1">SERVIS</text>
+        <text class="tagline dim" x="115" y="84" font-family="Nunito Sans, sans-serif" font-weight="700" font-size="11" letter-spacing="1.2">POZÁRUČNÍ SERVIS BATERIÍ</text>
+      </svg>
+    </a>
+
+    <nav class="primary">
+      <a href="#sluzby">Služby</a>
+      <a href="#modely">Modely</a>
+      <a href="#parallel-box">Parallel Box</a>
+      <a href="#o-nas">O nás</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="header-cta" href="#kontakt">Nezávazná poptávka</a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="Otevřít menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="close" id="closeBtn" aria-label="Zavřít menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 6l12 12M6 18L18 6"/></svg>
+  </button>
+  <a href="#sluzby">Služby</a>
+  <a href="#modely">Modely</a>
+  <a href="#parallel-box">Parallel Box</a>
+  <a href="#o-nas">O nás</a>
+  <a href="#kontakt">Kontakt</a>
+  <a class="cta-mobile" href="#kontakt">Nezávazná poptávka</a>
+  <a href="https://www.bftechnology.cz/" target="_blank" rel="noopener" class="parent-brand-mobile">
+    Součást skupiny
+    <img src="assets/bf-technology-logo_final_bile.svg" alt="BF technology s.r.o.">
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="badge-row">
+        <span class="dot"></span>
+        <span><strong>Specialisté na Solunu</strong> &nbsp;·&nbsp; Bývalý technický support Nanosun s.r.o.</span>
+      </div>
+      <h1>Pozáruční servis baterií <span class="hl">Soluna.</span><br>Profesionálně, rychle, na míru.</h1>
+      <p class="lead">Provádíme výměny BMS, oživování nefunkčních modulů, aktualizace firmware a kompletní diagnostiku HV i LV baterií Soluna. Roky zkušeností z autorizovaného supportu — nyní jako nezávislý servis pro koncové uživatele i instalační firmy.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#kontakt">Domluvit servis</a>
+        <a class="btn btn-ghost" href="#sluzby">Co umíme</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="battery-stack">
+        <div class="battery-cell">
+          <span class="led"></span>
+          <div class="meta"><b>Soluna HV Pack 15K</b><span>10× modul · BMS · 153,6 V</span></div>
+          <span class="cap">15 kWh</span>
+        </div>
+        <div class="battery-cell">
+          <span class="led"></span>
+          <div class="meta"><b>Soluna HV Pack 10K</b><span>7× modul · BMS · 102,4 V</span></div>
+          <span class="cap">10 kWh</span>
+        </div>
+        <div class="battery-cell">
+          <span class="led off"></span>
+          <div class="meta"><b>Soluna HV Pack 10K</b><span>BMS offline · vyžaduje servis</span></div>
+          <span class="cap">10 kWh</span>
+        </div>
+        <div class="pbox">HV Parallel Box &nbsp;·&nbsp; až <b>60 kWh</b> / měnič</div>
+        <div class="battery-cell">
+          <span class="led"></span>
+          <div class="meta"><b>Soluna HV Pack 15K</b><span>10× modul · BMS · 153,6 V</span></div>
+          <span class="cap">15 kWh</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div class="stat"><div class="num">8+</div><div class="label">Let zkušeností se Solunou</div></div>
+    <div class="stat"><div class="num">500+</div><div class="label">Servisovaných modulů</div></div>
+    <div class="stat"><div class="num">24/7</div><div class="label">Vzdálená diagnostika</div></div>
+    <div class="stat"><div class="num">CZ + SK</div><div class="label">Pokrytí servisem</div></div>
+  </div>
+</section>
+
+<!-- SLUZBY -->
+<section class="block" id="sluzby">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Co děláme</p>
+      <h2>Pozáruční servis bez kompromisů</h2>
+      <p>Po skončení záruky se opravdový servis teprve začíná vyplácet. Vyměníme vadné komponenty, oživíme „mrtvé" moduly a vrátíme baterie do plného provozu — bez nutnosti kupovat nové.</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <rect x="10" y="18" width="44" height="28" rx="3"/>
+            <path d="M18 18v-6M46 18v-6M18 52v-6M46 52v-6"/>
+            <circle cx="32" cy="32" r="5"/>
+            <path d="M24 28h-4M44 28h-4M24 36h-4M44 36h-4"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Výměna BMS</h3>
+          <p>Diagnostika a výměna řídicí desky baterie (Battery Management System) — nejčastější příčina selhání HV i LV packů.</p>
+          <ul class="bullets">
+            <li>Identifikace závadné BMS jednotky</li>
+            <li>Dodání originálního i náhradního dílu</li>
+            <li>Spárování s moduly, kalibrace SOC</li>
+            <li>Záruka 12 měsíců na provedenou opravu</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M32 8v24l16 8"/>
+            <circle cx="32" cy="36" r="22"/>
+            <path d="M22 50l4-6 4 4 4-8 4 6"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Oživení baterie</h3>
+          <p>Hluboce vybité, nevyvážené nebo „zamčené" moduly vrátíme zpět do provozu. Pasivní i aktivní balancování článků, postupné nabíjení, ladění parametrů.</p>
+          <ul class="bullets">
+            <li>Diagnostika článkového napětí</li>
+            <li>Aktivní vyvažování (Active Balancing)</li>
+            <li>Reset chybových stavů a alarmů</li>
+            <li>Test kapacity a vnitřního odporu</li>
+          </ul>
+        </div>
+      </article>
+      <article class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M32 8v32"/>
+            <path d="M22 28l10 12 10-12"/>
+            <rect x="10" y="44" width="44" height="14" rx="3"/>
+            <circle cx="20" cy="51" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>Upgrade firmware</h3>
+          <p>Aktuální FW pro BMS, hlavní řídicí jednotku i paralel box. Opravíme komunikační chyby s měničem (SolaX, Sungrow, GoodWe, Deye…) a získáte nové funkce.</p>
+          <ul class="bullets">
+            <li>Aktualizace BMS firmware</li>
+            <li>Kompatibilita s aktuálními měniči</li>
+            <li>Logování a vzdálený monitoring</li>
+            <li>Optimalizace nabíjecích křivek</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MODELY -->
+<section class="block" id="modely" style="background: var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Servisované modely</p>
+      <h2>Soluna baterie, které servisujeme</h2>
+      <p>Kompletní portfolio rezidenčních i komerčních úložišť Soluna — vysokonapěťové (HV) i nízkonapěťové (LV) systémy. Pokud váš model v seznamu není, zeptejte se — nejspíše ho zvládneme také.</p>
+    </div>
+    <div class="models-grid">
+
+      <article class="model">
+        <span class="tag">HV · Rezidenční</span>
+        <h3>Soluna HV Pack 10K</h3>
+        <p class="sub">Vysokonapěťový bateriový systém 10 kWh</p>
+        <dl>
+          <div class="row"><dt>Kapacita</dt><dd>10,24 kWh</dd></div>
+          <div class="row"><dt>Napětí</dt><dd>102,4 V (32× 3,2 V)</dd></div>
+          <div class="row"><dt>Chemie</dt><dd>LiFePO₄ (LFP)</dd></div>
+          <div class="row"><dt>Stackování</dt><dd>až 4× přes Parallel Box</dd></div>
+          <div class="row"><dt>Krytí</dt><dd>IP55</dd></div>
+        </dl>
+        <p class="note">Nejčastější závady: výpadek komunikace BMS s měničem, hluboké vybití po dlouhém odpojení, nerovnoměrné stárnutí článků.</p>
+      </article>
+
+      <article class="model">
+        <span class="tag">HV · Rezidenční</span>
+        <h3>Soluna HV Pack 15K</h3>
+        <p class="sub">Vysokonapěťový bateriový systém 15 kWh</p>
+        <dl>
+          <div class="row"><dt>Kapacita</dt><dd>15,36 kWh</dd></div>
+          <div class="row"><dt>Napětí</dt><dd>153,6 V (48× 3,2 V)</dd></div>
+          <div class="row"><dt>Chemie</dt><dd>LiFePO₄ (LFP)</dd></div>
+          <div class="row"><dt>Stackování</dt><dd>až 4× přes Parallel Box</dd></div>
+          <div class="row"><dt>Krytí</dt><dd>IP55</dd></div>
+        </dl>
+        <p class="note">Nejčastější závady: porucha hlavního stykače, chyby FW při nové verzi měniče, potřeba aktivního balancování po 3+ letech provozu.</p>
+      </article>
+
+      <article class="model">
+        <span class="tag">LV · Rezidenční</span>
+        <h3>Soluna S12 EU-G2</h3>
+        <p class="sub">Nízkonapěťový modul 5,12 kWh</p>
+        <dl>
+          <div class="row"><dt>Kapacita</dt><dd>5,12 kWh</dd></div>
+          <div class="row"><dt>Napětí</dt><dd>51,2 V (16× 3,2 V)</dd></div>
+          <div class="row"><dt>Chemie</dt><dd>LiFePO₄ (LFP)</dd></div>
+          <div class="row"><dt>Stackování</dt><dd>paralelně až 16 ks</dd></div>
+          <div class="row"><dt>Komunikace</dt><dd>CAN / RS485</dd></div>
+        </dl>
+        <p class="note">Nejčastější závady: ztráta komunikace mezi master/slave moduly, vybalancování při nesymetrickém zatížení, oprava propojovacích kabelů.</p>
+      </article>
+
+      <article class="model">
+        <span class="tag">LV · Komerční</span>
+        <h3>Soluna 4K Pack / 8K Pack</h3>
+        <p class="sub">Modulární LV baterie 4–8 kWh</p>
+        <dl>
+          <div class="row"><dt>Kapacita</dt><dd>4,8 / 7,68 kWh</dd></div>
+          <div class="row"><dt>Napětí</dt><dd>48 V nominální</dd></div>
+          <div class="row"><dt>Chemie</dt><dd>LiFePO₄ (LFP)</dd></div>
+          <div class="row"><dt>Použití</dt><dd>off-grid, záložní zdroje</dd></div>
+          <div class="row"><dt>Komunikace</dt><dd>CAN / RS485</dd></div>
+        </dl>
+        <p class="note">Starší generace stále v provozu u tisíců instalací. Servisujeme včetně dohledání náhradních článků a obnovení komunikace.</p>
+      </article>
+
+      <article class="model">
+        <span class="tag">Příslušenství</span>
+        <h3>HV Active Balancer</h3>
+        <p class="sub">Aktivní vyvažovač článků HV řady</p>
+        <dl>
+          <div class="row"><dt>Použití</dt><dd>HV Pack 10K / 15K</dd></div>
+          <div class="row"><dt>Princip</dt><dd>aktivní přesun energie</dd></div>
+          <div class="row"><dt>Účinnost</dt><dd>výrazně vyšší než pasivní balancing</dd></div>
+          <div class="row"><dt>Instalace</dt><dd>servisní zásah u zákazníka</dd></div>
+        </dl>
+        <p class="note">Doporučujeme u baterií starších 3 let, u kterých klesá využitelná kapacita kvůli rozjetým článkům — vyvážení v řádu dnů místo měsíců pasivního balancingu.</p>
+      </article>
+
+      <article class="model">
+        <span class="tag">Příslušenství</span>
+        <h3>HV Parallel Box</h3>
+        <p class="sub">Sběrnice až 4× HV baterií</p>
+        <dl>
+          <div class="row"><dt>Vstupy</dt><dd>4× HV Pack (10K nebo 15K)</dd></div>
+          <div class="row"><dt>Výstup</dt><dd>1× měnič</dd></div>
+          <div class="row"><dt>Max. kapacita</dt><dd>až 60 kWh / měnič</dd></div>
+          <div class="row"><dt>Krytí</dt><dd>IP54</dd></div>
+          <div class="row"><dt>Komunikace</dt><dd>RJ45 (8P)</dd></div>
+        </dl>
+        <p class="note">Detail níže — řešíme i přepojování boxu, výměnu komunikačních modulů a obnovení adresace baterií.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARALLEL BOX DETAIL -->
+<section class="block" id="parallel-box">
+  <div class="container feature-pbox">
+    <div>
+      <p class="eyebrow">HV Parallel Box</p>
+      <h3>Až <span>4 baterie</span> na jeden měnič. Až <span>60 kWh</span> na fázi.</h3>
+      <p>Soluna HV Parallel Box je sběrná jednotka, která umožňuje paralelně propojit až čtyři HV Pack baterie 10K nebo 15K na jeden vstup hybridního měniče. Tím získáte výrazně větší kapacitu úložiště bez nutnosti druhého střídače.</p>
+      <p>Box má vlastní komunikační logiku, která mezi sebou synchronizuje BMS jednotlivých baterií, sleduje SOC a teplotu a hlásí stavy nadřazenému měniči. Pokud nekomunikuje správně, vidíte v aplikaci buď nulovou kapacitu, nebo bateriový systém vůbec nenajede.</p>
+      <ul>
+        <li>Diagnostika výpadku komunikace RJ45 mezi packy</li>
+        <li>Výměna interní řídicí elektroniky boxu</li>
+        <li>Přeadresování baterií a obnovení master/slave logiky</li>
+        <li>Aktualizace firmware pro kompatibilitu s novou verzí měniče</li>
+      </ul>
+    </div>
+    <div class="pbox-schema" aria-hidden="true">
+      <div class="pbox-row">
+        <div class="pbox-node inverter"><b>Měnič</b>Hybridní střídač</div>
+        <div class="pbox-node parallel"><b>Parallel Box</b>HV sběrnice</div>
+      </div>
+      <div class="pbox-grid">
+        <div class="pbox-node"><b>HV Pack 1</b>10K / 15K</div>
+        <div class="pbox-node"><b>HV Pack 2</b>10K / 15K</div>
+        <div class="pbox-node"><b>HV Pack 3</b>10K / 15K</div>
+        <div class="pbox-node"><b>HV Pack 4</b>10K / 15K</div>
+      </div>
+      <div class="spec-table">
+        <span class="label">Pracovní napětí</span><span class="value">530 VDC</span>
+        <span class="label">Vstupní proud (max.)</span><span class="value">4× 50 A</span>
+        <span class="label">Výstupní proud (max.)</span><span class="value">175 A</span>
+        <span class="label">Komunikace</span><span class="value">RJ45 (8P)</span>
+        <span class="label">Provozní teplota</span><span class="value">−20 až 50 °C</span>
+        <span class="label">Krytí / instalace</span><span class="value">IP54 / vnitřní</span>
+        <span class="label">Hmotnost</span><span class="value">3,5 kg</span>
+        <span class="label">Rozměry (V×Š×H)</span><span class="value">86 × 332 × 232 mm</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O NAS -->
+<section class="block" id="o-nas" style="background: var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="container about-grid">
+    <div>
+      <p class="eyebrow" style="color:var(--accent); font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin:0 0 12px;">O nás</p>
+      <h3>Roky <span>uvnitř</span> Soluny.<br>Teď nezávisle.</h3>
+      <p>Tým, který stojí za Soluna Servis, působil dlouhé roky jako technický support oficiálního českého distributora <strong style="color:var(--text);">Nanosun s.r.o.</strong> Procházeli jsme reklamace, řešili instalační i komunikační problémy a osobně jsme v rukou drželi prakticky každou generaci HV i LV baterií Soluna na českém a slovenském trhu.</p>
+      <p>Po skončení distribuce nabízíme tuto unikátní znalost přímo koncovým zákazníkům a instalačním firmám — jako <strong style="color:var(--text);">pozáruční servis</strong> pod hlavičkou skupiny <strong style="color:var(--text);">BF technology s.r.o.</strong></p>
+      <p style="margin-top:24px;"><a class="btn btn-primary" href="#kontakt">Napsat servisní dotaz</a></p>
+    </div>
+    <div class="about-card">
+      <div class="row">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </span>
+        <div><b>Hluboká znalost produktu</b><p>Roky reálné praxe na hardwaru i firmware Soluna — víme, kde slabá místa jsou.</p></div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </span>
+        <div><b>Rychlá odezva</b><p>Vzdálená diagnostika do druhého dne, servisní výjezdy v rámci ČR a SK po předchozí domluvě.</p></div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7L12 16l-6.5 4.5 2-7L2 9h7z"/></svg>
+        </span>
+        <div><b>Zázemí BF technology</b><p>Skupina s vlastními odborníky na FVE, BESS, Loxone a EMS — řešíme baterii v kontextu celé instalace.</p></div>
+      </div>
+      <div class="row">
+        <span class="ico">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg>
+        </span>
+        <div><b>Originální i ekvivalentní díly</b><p>Síť dodavatelů na originální Soluna komponenty + ověřené ekvivalenty, kde to dává smysl.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section class="block" id="dokumenty">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Dokumentace</p>
+      <h2>Datasheety ke stažení</h2>
+      <p>Originální výrobní dokumentace k modelům, které servisujeme. Pokud nemáte jistotu, jaký model máte, pošlete nám fotku štítku — model určíme.</p>
+    </div>
+    <div class="docs-grid">
+      <a class="doc" href="dokumenty/1.)%20Soluna%20Brochure_HV%20Pack%2010K%2015K%20L-E%20_%20V.202303.pdf" target="_blank" rel="noopener">
+        <span class="pdf-ico">PDF</span>
+        <span class="info"><b>HV Pack 10K & 15K — brožura</b><span>Soluna Brochure · V.2023.03</span></span>
+      </a>
+      <a class="doc" href="dokumenty/HV-series.pdf" target="_blank" rel="noopener">
+        <span class="pdf-ico">PDF</span>
+        <span class="info"><b>HV Series — kompletní specifikace</b><span>Detail řady HV Pack</span></span>
+      </a>
+      <a class="doc" href="dokumenty/HV-Parallel-Box-v10.pdf" target="_blank" rel="noopener">
+        <span class="pdf-ico">PDF</span>
+        <span class="info"><b>HV Parallel Box v1.0</b><span>Technical Specifications</span></span>
+      </a>
+      <a class="doc" href="dokumenty/SOLUNA%20HV%20Active%20Balancing%20Instruction.pdf" target="_blank" rel="noopener">
+        <span class="pdf-ico">PDF</span>
+        <span class="info"><b>HV Active Balancing</b><span>Pokyny pro aktivní vyvažování</span></span>
+      </a>
+      <a class="doc" href="dokumenty/Soluna%20Products%2020231010.pdf" target="_blank" rel="noopener">
+        <span class="pdf-ico">PDF</span>
+        <span class="info"><b>Soluna Products 2023</b><span>Přehled celého produktového portfolia</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="kontakt">
+  <div class="container contact-grid">
+    <div class="contact-aside">
+      <p class="eyebrow">Kontakt</p>
+      <h2>Máte problém s baterií? <br>Napište nám.</h2>
+      <p>Pošlete nám model baterie, popis závady a ideálně i fotku displeje měniče nebo LED indikace baterie. Odpovíme zpravidla do 24 hodin pracovní den.</p>
+      <div class="quick">
+        <a href="tel:+420776111100">
+          <span class="ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          +420 776 111 100
+        </a>
+        <a href="mailto:info@bftechnology.cz">
+          <span class="ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+          </span>
+          info@bftechnology.cz
+        </a>
+        <a href="https://maps.google.com/?q=Obchodní+455/12,+405+02+Děčín" target="_blank" rel="noopener">
+          <span class="ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span><span style="display:block; font-size:11px; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">Sídlo &amp; servisní dílna</span>Obchodní 455/12, 405 02 Děčín</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm" method="post" action="send.php">
+      <div id="contact-status"></div>
+      <div class="row">
+        <div class="field">
+          <label for="cf-name">Vaše jméno</label>
+          <input type="text" id="cf-name" name="name" required maxlength="100" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="cf-email">E-mailová adresa</label>
+          <input type="email" id="cf-email" name="email" required maxlength="150" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="cf-phone">Telefonní číslo</label>
+          <input type="tel" id="cf-phone" name="phone" required maxlength="50" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="cf-model">Model baterie</label>
+          <select id="cf-model" name="interest">
+            <option value="">— Vyberte model —</option>
+            <option>Soluna HV Pack 10K</option>
+            <option>Soluna HV Pack 15K</option>
+            <option>Soluna S12 EU-G2 (LV)</option>
+            <option>Soluna 4K / 8K Pack (LV)</option>
+            <option>HV Parallel Box</option>
+            <option>HV Active Balancer</option>
+            <option>Jiný model / nevím</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="cf-message">Popis závady</label>
+          <textarea id="cf-message" name="message" maxlength="5000" rows="5" placeholder="Co se děje (chybový kód, blikání LED, výpadek komunikace s měničem…), kdy začalo, jaký máte měnič a jak je systém zapojen."></textarea>
+        </div>
+        <!-- honeypot -->
+        <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute; left:-9999px;" aria-hidden="true">
+        <div class="field full">
+          <p class="gdpr">Odesláním formuláře souhlasíte se zpracováním osobních údajů společnosti BF technology s.r.o. v souladu s nařízením Evropského parlamentu a Rady (EU) č. 2016/679. Údaje (jméno, e-mail, telefon) zpracujeme pouze pro účely poptávaného servisního zásahu.</p>
+        </div>
+        <div class="submit-row">
+          <button type="submit">Odeslat servisní dotaz</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <svg class="logo-svg" viewBox="0 0 380 90" xmlns="http://www.w3.org/2000/svg" style="height:42px; margin-bottom:16px;" aria-hidden="true">
+          <rect class="battery-body" x="10" y="20" width="78" height="50" rx="6" stroke-width="5"/>
+          <rect class="battery-cap" x="88" y="34" width="8" height="22" rx="2"/>
+          <rect class="battery-fill" x="18" y="28" width="20" height="34" rx="2"/>
+          <rect class="battery-fill" x="42" y="28" width="20" height="34" rx="2" opacity="0.6"/>
+          <rect class="battery-fill" x="66" y="28" width="16" height="34" rx="2" opacity="0.3"/>
+          <text class="word" x="115" y="42" font-family="Nunito Sans, sans-serif" font-weight="900" font-size="26" letter-spacing="1">SOLUNA</text>
+          <text class="word dim" x="115" y="68" font-family="Nunito Sans, sans-serif" font-weight="900" font-size="26" letter-spacing="1">SERVIS</text>
+        </svg>
+        <p style="margin:0 0 14px;">Pozáruční servis baterií Soluna. Výměny BMS, oživování modulů, FW upgrady — bývalý technický support Nanosun s.r.o.</p>
+        <div class="parent-block">
+          <span class="label">Součást skupiny</span>
+          <a href="https://www.bftechnology.cz/" target="_blank" rel="noopener" title="BF technology s.r.o.">
+            <img src="assets/bf-technology-logo_final_bile.svg" alt="BF technology s.r.o.">
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4>Web</h4>
+        <a href="index.html">Úvod</a>
+        <a href="#sluzby">Služby</a>
+        <a href="#modely">Modely</a>
+        <a href="#parallel-box">Parallel Box</a>
+        <a href="#o-nas">O nás</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <a href="tel:+420776111100">+420 776 111 100</a>
+        <a href="mailto:info@bftechnology.cz">info@bftechnology.cz</a>
+        <a href="https://maps.google.com/?q=Obchodní+455/12,+405+02+Děčín" target="_blank" rel="noopener">Obchodní 455/12, Děčín</a>
+      </div>
+      <div>
+        <h4>Skupina BF technology</h4>
+        <a href="https://www.bftechnology.cz/" target="_blank" rel="noopener">bftechnology.cz</a>
+        <a href="https://www.automatizovany-dum.cz/" target="_blank" rel="noopener">automatizovany-dum.cz</a>
+        <a href="https://www.instagram.com/bftechnology_sro/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/BFtechnologyCZ/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 BF technology s.r.o. · Všechna práva vyhrazena.</span>
+      <span>Soluna™ je ochranná známka výrobce. Tento web není oficiálním webem Soluny ani Nanosun s.r.o.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var ham = document.getElementById('hamburgerBtn');
+    var menu = document.getElementById('mobileMenu');
+    var close = document.getElementById('closeBtn');
+    function open(){ menu.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function shut(){ menu.classList.remove('open'); document.body.style.overflow = ''; }
+    if (ham) ham.addEventListener('click', open);
+    if (close) close.addEventListener('click', shut);
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') shut(); });
+
+    // Form status from ?sent=1/0 redirect
+    var params = new URLSearchParams(window.location.search);
+    var status = document.getElementById('contact-status');
+    if (status) {
+      if (params.get('sent') === '1') {
+        status.className = 'ok';
+        status.textContent = 'Děkujeme! Vaše zpráva byla odeslána. Ozveme se vám zpravidla do 24 hodin pracovní den.';
+        document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+      } else if (params.get('sent') === '0') {
+        status.className = 'err';
+        status.textContent = 'Zprávu se nepodařilo odeslat. Zkontrolujte vyplněná pole a zkuste to prosím znovu.';
+        document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
