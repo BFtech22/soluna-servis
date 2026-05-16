@@ -22,9 +22,9 @@
     --line: #2a2f3d;
     --text: #e8ebf2;
     --text-dim: #9aa3b8;
-    --accent: #f39200;      /* Soluna orange */
-    --accent-2: #ffb547;
-    --accent-soft: rgba(243,146,0,0.12);
+    --accent: #f8b500;      /* BF technology yellow */
+    --accent-2: #ffd24d;
+    --accent-soft: rgba(248,181,0,0.12);
     --max: 1240px;
   }
   *, *::before, *::after { box-sizing: border-box; }
@@ -166,7 +166,7 @@
   .hero {
     position: relative;
     background:
-      radial-gradient(ellipse at 80% 30%, rgba(243,146,0,0.18), transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(248,181,0,0.18), transparent 60%),
       linear-gradient(180deg, #0e1015 0%, #0a0c11 100%);
     padding: 70px 0 50px;
     overflow: hidden;
@@ -207,7 +207,7 @@
     padding: 30px;
     border-radius: 18px;
     background:
-      radial-gradient(circle at center, rgba(243,146,0,0.15), transparent 70%);
+      radial-gradient(circle at center, rgba(248,181,0,0.15), transparent 70%);
   }
   .battery-stack {
     display: grid;
@@ -232,7 +232,7 @@
   .battery-cell .led {
     width: 10px; height: 10px; border-radius: 50%;
     background: var(--accent);
-    box-shadow: 0 0 12px rgba(243,146,0,0.7);
+    box-shadow: 0 0 12px rgba(248,181,0,0.7);
     flex-shrink: 0;
   }
   .battery-cell .led.off { background: #2a2f3d; box-shadow: none; }
@@ -244,7 +244,7 @@
   .battery-cell .cap {
     font-size: 11px; font-weight: 800; letter-spacing: 0.8px;
     color: var(--accent); text-transform: uppercase;
-    border: 1px solid rgba(243,146,0,0.4);
+    border: 1px solid rgba(248,181,0,0.4);
     border-radius: 999px;
     padding: 3px 10px;
   }
@@ -273,7 +273,7 @@
     color: var(--text-dim);
     max-width: 100%;
   }
-  .badge-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(243,146,0,0.18); flex-shrink: 0; }
+  .badge-row .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px rgba(248,181,0,0.18); flex-shrink: 0; }
   .badge-row strong { color: var(--text); }
 
   /* STATS */
@@ -364,7 +364,7 @@
     display: inline-block; align-self: flex-start;
     background: var(--accent-soft);
     color: var(--accent);
-    border: 1px solid rgba(243,146,0,0.35);
+    border: 1px solid rgba(248,181,0,0.35);
     border-radius: 999px;
     padding: 3px 10px;
     font-size: 11px;
@@ -426,7 +426,7 @@
     color: var(--text-dim);
   }
   .pbox-schema .pbox-node b { display: block; color: var(--accent); font-size: 14px; margin-bottom: 2px; letter-spacing: 1.2px; }
-  .pbox-schema .pbox-node.inverter { border-color: rgba(243,146,0,0.5); color: var(--text); }
+  .pbox-schema .pbox-node.inverter { border-color: rgba(248,181,0,0.5); color: var(--text); }
   .pbox-schema .pbox-node.parallel {
     grid-column: 1 / -1;
     background: var(--accent);
@@ -498,7 +498,7 @@
 
   /* CONTACT FORM */
   .contact-section {
-    background: linear-gradient(135deg, #0f1217 0%, #211400 100%);
+    background: linear-gradient(135deg, #0f1217 0%, #211a00 100%);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     padding: 80px 0;
