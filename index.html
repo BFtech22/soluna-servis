@@ -171,10 +171,25 @@
     padding: 70px 0 50px;
     overflow: hidden;
   }
-  .hero-grid { display: grid; grid-template-columns: 1fr; gap: 60px; align-items: center; max-width: 820px; margin: 0 auto; text-align: center; }
-  .hero-grid .badge-row { margin-left: auto; margin-right: auto; }
-  .hero-grid p.lead { margin-left: auto; margin-right: auto; }
-  .hero-grid .cta-row { justify-content: center; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 50px; align-items: center; }
+  .hero-cover {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-cover img {
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    border-radius: 14px;
+    box-shadow:
+      0 30px 60px rgba(0,0,0,0.55),
+      0 0 0 1px rgba(255,255,255,0.05),
+      0 0 60px rgba(248,181,0,0.18);
+    transition: transform .35s ease;
+  }
+  .hero-cover:hover img { transform: scale(1.02); }
   .hero h1 {
     font-size: clamp(28px, 4.6vw, 56px);
     line-height: 1.05; margin: 0 0 22px;
@@ -328,7 +343,7 @@
     display: flex; align-items: center; justify-content: center;
     border-bottom: 1px solid var(--line);
   }
-  .card .icon-wrap svg { width: 72px; height: 72px; color: var(--accent); }
+  .card .icon-wrap svg { width: 110px; height: 110px; color: var(--accent); }
   .card .body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
   .card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 900; }
   .card p { margin: 0 0 18px; color: var(--text-dim); flex: 1; }
@@ -409,6 +424,23 @@
   .feature-pbox ul li::before {
     content: ""; position: absolute; left: 0; top: 16px;
     width: 14px; height: 2px; background: var(--accent);
+  }
+
+  /* PBOX photo */
+  .pbox-photo {
+    background: linear-gradient(135deg, #0f1217 0%, #1d212c 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pbox-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   }
 
   /* PBOX schema */
@@ -498,6 +530,59 @@
   }
   .doc .info b { display: block; color: var(--text); font-size: 14px; font-weight: 800; margin-bottom: 4px; line-height: 1.35; }
   .doc .info span { color: var(--text-dim); font-size: 12px; }
+
+  /* DOCS featured (brochure with cover thumbnail) */
+  .doc-featured {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    align-items: stretch;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px;
+    margin: 0 0 22px;
+    transition: border-color .2s, transform .2s;
+  }
+  .doc-featured:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .doc-featured .cover {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .doc-featured .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .doc-featured .info { display: flex; flex-direction: column; justify-content: center; }
+  .doc-featured .tag {
+    display: inline-block; align-self: flex-start;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid rgba(248,181,0,0.35);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin: 0 0 10px;
+  }
+  .doc-featured h3 { margin: 0 0 6px; font-size: 20px; font-weight: 900; color: var(--text); line-height: 1.2; }
+  .doc-featured p { margin: 0 0 14px; color: var(--text-dim); font-size: 14px; line-height: 1.5; }
+  .doc-featured .meta { color: var(--text-dim); font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px; }
+  .doc-featured .btn-pdf {
+    display: inline-flex; align-items: center; gap: 8px;
+    align-self: flex-start;
+    background: var(--accent); color: #000;
+    padding: 10px 16px; border-radius: 6px;
+    font-weight: 800; font-size: 13px;
+    text-transform: uppercase; letter-spacing: 0.6px;
+    margin-top: 4px;
+    transition: background .2s;
+  }
+  .doc-featured .btn-pdf:hover { background: var(--accent-2); color: #000; }
 
   /* CONTACT FORM */
   .contact-section {
@@ -641,7 +726,12 @@
 
   /* RESPONSIVE */
   @media (max-width: 980px) {
-    .hero-grid, .feature-pbox, .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-grid, .feature-pbox, .about-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+    .hero-grid .badge-row { margin-left: auto; margin-right: auto; }
+    .hero-grid p.lead { margin-left: auto; margin-right: auto; }
+    .hero-grid .cta-row { justify-content: center; }
+    .hero-cover { order: -1; }
+    .hero-cover img { max-width: 420px; }
     .hero-visual { max-width: 520px; margin: 0 auto; }
     .cards, .models-grid { grid-template-columns: 1fr 1fr; gap: 18px; }
     .contact-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -669,6 +759,8 @@
     .contact-section { padding: 56px 0; }
     .pbox-schema .spec-table { grid-template-columns: 1fr; gap: 4px; }
     .pbox-schema .spec-table .value { text-align: left; }
+    .doc-featured { grid-template-columns: 1fr; gap: 18px; }
+    .doc-featured .cover { max-width: 240px; margin: 0 auto; aspect-ratio: 565/800; }
   }
   @media (max-width: 380px) {
     .topbar .contact-mini { flex-direction: column; gap: 4px; align-items: center; }
@@ -723,6 +815,7 @@
       <a href="#sluzby">Služby</a>
       <a href="#parallel-box">Parallel Box</a>
       <a href="#o-nas">O nás</a>
+      <a href="#dokumenty">Datasheety</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a class="header-cta" href="#kontakt">Nezávazná poptávka</a>
@@ -741,6 +834,7 @@
   <a href="#sluzby">Služby</a>
   <a href="#parallel-box">Parallel Box</a>
   <a href="#o-nas">O nás</a>
+  <a href="#dokumenty">Datasheety</a>
   <a href="#kontakt">Kontakt</a>
   <a class="cta-mobile" href="#kontakt">Nezávazná poptávka</a>
   <a href="https://www.bftechnology.cz/" target="_blank" rel="noopener" class="parent-brand-mobile">
@@ -758,12 +852,15 @@
         <span><strong>Specialisté na Solunu</strong> &nbsp;·&nbsp; Bývalý technický support nanosun s.r.o.</span>
       </div>
       <h1>Pozáruční servis baterií <span class="hl">Soluna.</span><br>Profesionálně, rychle, na míru.</h1>
-      <p class="lead">Provádíme výměny BMS, oživování nefunkčních modulů, aktualizace firmware a kompletní diagnostiku HV i LV baterií Soluna. Roky zkušeností z autorizovaného supportu — nyní jako nezávislý servis pro koncové uživatele i instalační firmy.</p>
+      <p class="lead">Provádíme výměny BMS, oživování nefunkčních baterií, aktualizace firmware a kompletní diagnostiku HV baterií Soluna. Roky zkušeností z autorizovaného supportu — nyní jako nezávislý servis pro koncové uživatele i instalační firmy.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#kontakt">Domluvit servis</a>
         <a class="btn btn-ghost" href="#sluzby">Co umíme</a>
       </div>
     </div>
+    <a class="hero-cover" href="dokumenty/1.)%20Soluna%20Brochure_HV%20Pack%2010K%2015K%20L-E%20_%20V.202303.pdf" target="_blank" rel="noopener" aria-label="Stáhnout brožuru Soluna HV Pack 10K & 15K">
+      <img src="foto/soluna-hv-pack-titulka.jpg" alt="Brožura Soluna HV Pack 10K & 15K — titulní strana">
+    </a>
   </div>
 </section>
 
@@ -778,16 +875,28 @@
     <div class="cards">
       <article class="card">
         <div class="icon-wrap">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-            <rect x="10" y="18" width="44" height="28" rx="3"/>
-            <path d="M18 18v-6M46 18v-6M18 52v-6M46 52v-6"/>
-            <circle cx="32" cy="32" r="5"/>
-            <path d="M24 28h-4M44 28h-4M24 36h-4M44 36h-4"/>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+            <!-- chip / PCB module -->
+            <rect x="14" y="18" width="36" height="28" rx="3"/>
+            <!-- pin connectors -->
+            <path d="M20 18v-4M28 18v-4M36 18v-4M44 18v-4"/>
+            <path d="M20 46v4M28 46v4M36 46v4M44 46v4"/>
+            <path d="M14 24h-4M14 32h-4M14 40h-4"/>
+            <path d="M50 24h4M50 32h4M50 40h4"/>
+            <!-- BMS text -->
+            <text x="32" y="36.5" text-anchor="middle"
+                  font-family="Nunito Sans, sans-serif" font-weight="900" font-size="11"
+                  fill="currentColor" stroke="none" letter-spacing="0.5">BMS</text>
+            <!-- swap arrows (curved, top-left & bottom-right) -->
+            <path d="M8 14a6 6 0 0 1 6-6"/>
+            <path d="M14 8l-3-3M14 8l3-3"/>
+            <path d="M56 50a6 6 0 0 1-6 6"/>
+            <path d="M50 56l3 3M50 56l3-3"/>
           </svg>
         </div>
         <div class="body">
           <h3>Výměna BMS</h3>
-          <p>Diagnostika a výměna řídicí desky baterie (Battery Management System) — nejčastější příčina selhání HV i LV packů.</p>
+          <p>Diagnostika a výměna řídicí desky baterie (Battery Management System) — nejčastější příčina selhání HV packů.</p>
           <ul class="bullets">
             <li>Identifikace závadné BMS jednotky</li>
             <li>Dodání originálního i náhradního dílu</li>
@@ -798,10 +907,12 @@
       </article>
       <article class="card">
         <div class="icon-wrap">
-          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M32 8v24l16 8"/>
-            <circle cx="32" cy="36" r="22"/>
-            <path d="M22 50l4-6 4 4 4-8 4 6"/>
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+            <!-- battery body -->
+            <rect x="6" y="18" width="46" height="32" rx="4"/>
+            <rect x="52" y="26" width="5" height="16" rx="1.5" fill="currentColor" stroke="none"/>
+            <!-- ECG / heartbeat pulse line -->
+            <path d="M11 34h7l3-7 5 14 4-10 4 6 3-3h8" stroke-width="3"/>
           </svg>
         </div>
         <div class="body">
@@ -826,7 +937,7 @@
         </div>
         <div class="body">
           <h3>Upgrade firmware</h3>
-          <p>Aktuální FW pro BMS, hlavní řídicí jednotku i paralel box. Opravíme komunikační chyby s měničem (SolaX, Sungrow, GoodWe, Deye…) a získáte nové funkce.</p>
+          <p>Aktuální FW pro BMS, hlavní řídicí jednotku i paralel box.</p>
           <ul class="bullets">
             <li>Aktualizace BMS firmware</li>
             <li>Kompatibilita s aktuálními měniči</li>
@@ -854,27 +965,8 @@
         <li>Aktualizace firmware pro kompatibilitu s novou verzí měniče</li>
       </ul>
     </div>
-    <div class="pbox-schema" aria-hidden="true">
-      <div class="pbox-row">
-        <div class="pbox-node inverter"><b>Měnič</b>Hybridní střídač</div>
-        <div class="pbox-node parallel"><b>Parallel Box</b>HV sběrnice</div>
-      </div>
-      <div class="pbox-grid">
-        <div class="pbox-node"><b>HV Pack 1</b>10K / 15K</div>
-        <div class="pbox-node"><b>HV Pack 2</b>10K / 15K</div>
-        <div class="pbox-node"><b>HV Pack 3</b>10K / 15K</div>
-        <div class="pbox-node"><b>HV Pack 4</b>10K / 15K</div>
-      </div>
-      <div class="spec-table">
-        <span class="label">Pracovní napětí</span><span class="value">530 VDC</span>
-        <span class="label">Vstupní proud (max.)</span><span class="value">4× 50 A</span>
-        <span class="label">Výstupní proud (max.)</span><span class="value">175 A</span>
-        <span class="label">Komunikace</span><span class="value">RJ45 (8P)</span>
-        <span class="label">Provozní teplota</span><span class="value">−20 až 50 °C</span>
-        <span class="label">Krytí / instalace</span><span class="value">IP54 / vnitřní</span>
-        <span class="label">Hmotnost</span><span class="value">3,5 kg</span>
-        <span class="label">Rozměry (V×Š×H)</span><span class="value">86 × 332 × 232 mm</span>
-      </div>
+    <div class="pbox-photo">
+      <img src="foto/parallel-box.jpg" alt="Soluna HV Pack Parallel Box" loading="lazy">
     </div>
   </div>
 </section>
@@ -885,7 +977,7 @@
     <div>
       <p class="eyebrow" style="color:var(--accent); font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; margin:0 0 12px;">O nás</p>
       <h3>Roky <span>uvnitř</span> Soluny.<br>Teď nezávisle.</h3>
-      <p>Tým, který stojí za Soluna Servis, působil roky jako technický support oficiálního českého distributora <strong style="color:var(--text);">nanosun s.r.o.</strong> Procházeli jsme reklamace, řešili instalační i komunikační problémy a osobně jsme v rukou drželi prakticky každou generaci HV i LV baterií Soluna na českém a slovenském trhu.</p>
+      <p>Tým, který stojí za Soluna Servis, působil roky jako technický support oficiálního českého distributora <strong style="color:var(--text);">nanosun s.r.o.</strong> Procházeli jsme reklamace, řešili instalační i komunikační problémy a osobně jsme v rukou drželi prakticky každou generaci HV baterií Soluna na českém a slovenském trhu.</p>
       <p>Po skončení distribuce nabízíme tuto unikátní znalost přímo koncovým zákazníkům a instalačním firmám — jako <strong style="color:var(--text);">pozáruční servis</strong> pod hlavičkou skupiny <strong style="color:var(--text);">BF technology s.r.o.</strong></p>
       <p style="margin-top:24px;"><a class="btn btn-primary" href="#kontakt">Napsat servisní dotaz</a></p>
     </div>
@@ -926,26 +1018,31 @@
       <h2>Datasheety ke stažení</h2>
       <p>Originální výrobní dokumentace k modelům, které servisujeme. Pokud nemáte jistotu, jaký model máte, pošlete nám fotku štítku — model určíme.</p>
     </div>
+
+    <a class="doc-featured" href="dokumenty/1.)%20Soluna%20Brochure_HV%20Pack%2010K%2015K%20L-E%20_%20V.202303.pdf" target="_blank" rel="noopener">
+      <div class="cover">
+        <img src="foto/soluna-hv-pack-titulka.jpg" alt="Titulní strana brožury Soluna HV Pack 10K & 15K" loading="lazy">
+      </div>
+      <div class="info">
+        <span class="tag">Doporučeno</span>
+        <h3>Soluna HV Pack 10K &amp; 15K (L-E)</h3>
+        <p>Oficiální výrobní brožura k vysokonapěťovým bateriovým packům, které servisujeme nejčastěji. Technické specifikace, schéma zapojení a popis chování BMS.</p>
+        <span class="meta">PDF · 32 stran · V.2023.03</span>
+        <span class="btn-pdf">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+          Stáhnout PDF
+        </span>
+      </div>
+    </a>
+
     <div class="docs-grid">
-      <a class="doc" href="dokumenty/1.)%20Soluna%20Brochure_HV%20Pack%2010K%2015K%20L-E%20_%20V.202303.pdf" target="_blank" rel="noopener">
+      <a class="doc" href="dokumenty/Soluna_L.pdf" target="_blank" rel="noopener">
         <span class="pdf-ico">PDF</span>
-        <span class="info"><b>HV Pack 10K & 15K — brožura</b><span>Soluna Brochure · V.2023.03</span></span>
-      </a>
-      <a class="doc" href="dokumenty/HV-series.pdf" target="_blank" rel="noopener">
-        <span class="pdf-ico">PDF</span>
-        <span class="info"><b>HV Series — kompletní specifikace</b><span>Detail řady HV Pack</span></span>
+        <span class="info"><b>Soluna HV Pack 10K &amp; 15K (L)</b><span>Technical Specification</span></span>
       </a>
       <a class="doc" href="dokumenty/HV-Parallel-Box-v10.pdf" target="_blank" rel="noopener">
         <span class="pdf-ico">PDF</span>
         <span class="info"><b>HV Parallel Box v1.0</b><span>Technical Specifications</span></span>
-      </a>
-      <a class="doc" href="dokumenty/SOLUNA%20HV%20Active%20Balancing%20Instruction.pdf" target="_blank" rel="noopener">
-        <span class="pdf-ico">PDF</span>
-        <span class="info"><b>HV Active Balancing</b><span>Pokyny pro aktivní vyvažování</span></span>
-      </a>
-      <a class="doc" href="dokumenty/Soluna%20Products%2020231010.pdf" target="_blank" rel="noopener">
-        <span class="pdf-ico">PDF</span>
-        <span class="info"><b>Soluna Products 2023</b><span>Přehled celého produktového portfolia</span></span>
       </a>
     </div>
   </div>
@@ -975,12 +1072,22 @@
           <span class="ico">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </span>
-          <span><span style="display:block; font-size:11px; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">Sídlo &amp; servisní dílna</span>Obchodní 455/12, 405 02 Děčín</span>
+          <span><span style="display:block; font-size:11px; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">Sídlo</span>Obchodní 455/12, 405 02 Děčín</span>
+        </a>
+        <a href="https://maps.google.com/?q=Tyršova+1210/11,+Krásná+Lípa" target="_blank" rel="noopener">
+          <span class="ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
+          </span>
+          <span><span style="display:block; font-size:11px; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px;">Servisní dílna</span>Tyršova 1210/11, Krásná Lípa</span>
         </a>
       </div>
     </div>
 
-    <form class="contact-form" id="contactForm" method="post" action="send.php">
+    <form class="contact-form" id="contactForm" method="POST" action="https://api.web3forms.com/submit">
+      <input type="hidden" name="access_key" value="f2d962e4-0b6d-49cc-840d-ef358e6ab49c">
+      <input type="hidden" name="subject" value="Soluna Servis — nový servisní dotaz">
+      <input type="hidden" name="from_name" value="Soluna Servis web">
+      <input type="hidden" name="redirect" value="https://soluna-servis.cz/?sent=1#kontakt">
       <div id="contact-status"></div>
       <div class="row">
         <div class="field">
@@ -1001,8 +1108,6 @@
             <option value="">— Vyberte model —</option>
             <option>Soluna HV Pack 10K</option>
             <option>Soluna HV Pack 15K</option>
-            <option>Soluna S12 EU-G2 (LV)</option>
-            <option>Soluna 4K / 8K Pack (LV)</option>
             <option>HV Parallel Box</option>
             <option>HV Active Balancer</option>
             <option>Jiný model / nevím</option>
@@ -1053,13 +1158,15 @@
         <a href="#sluzby">Služby</a>
         <a href="#parallel-box">Parallel Box</a>
         <a href="#o-nas">O nás</a>
+        <a href="#dokumenty">Datasheety</a>
         <a href="#kontakt">Kontakt</a>
       </div>
       <div>
         <h4>Kontakt</h4>
         <a href="tel:+420776111100">+420 776 111 100</a>
         <a href="mailto:info@bftechnology.cz">info@bftechnology.cz</a>
-        <a href="https://maps.google.com/?q=Obchodní+455/12,+405+02+Děčín" target="_blank" rel="noopener">Obchodní 455/12, Děčín</a>
+        <a href="https://maps.google.com/?q=Obchodní+455/12,+405+02+Děčín" target="_blank" rel="noopener">Sídlo: Obchodní 455/12, Děčín</a>
+        <a href="https://maps.google.com/?q=Tyršova+1210/11,+Krásná+Lípa" target="_blank" rel="noopener">Dílna: Tyršova 1210/11, Krásná Lípa</a>
       </div>
       <div>
         <h4>Skupina BF technology</h4>
