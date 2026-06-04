@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "soluna-servis",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8765", "--directory", "/Users/phdr.janbohme/Downloads/prac/Claude/webovky/soluna-servis"],
+      "port": 8765
+    }
+  ]
+}
