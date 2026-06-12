@@ -1240,32 +1240,6 @@
     <div class="led-section">
       <div class="led-list">
         <div class="led-row">
-          <span class="led-dot red"></span>
-          <div class="led-info">
-            <b>Červená — Black start mode</b>
-            <p>Baterie startuje bez napájení ze sítě i bez fotovoltaiky. Tento režim spustíte <strong style="color:var(--text);">dlouhým stiskem black-start tlačítka (cca 10 sekund)</strong> na boku baterie. Po aktivaci dokáže baterie sama napájet hybridní měnič a obnovit komunikaci s ním i v plně odpojené síti.</p>
-            <p>Typické využití: po hluboké výpadku sítě, po dlouhodobém odpojení, nebo při prvním uvedení do provozu, když ještě nevidí PV a měnič není napájený.</p>
-            <span class="meta info">Servisní režim</span>
-          </div>
-        </div>
-        <div class="led-row">
-          <span class="led-dot purple"></span>
-          <div class="led-info">
-            <b>Fialová — Bez komunikace s měničem</b>
-            <p>Baterie ztratila komunikaci s hybridním střídačem na déle než <strong style="color:var(--text);">5 minut</strong>. Měnič v aplikaci buď ukazuje 0 % SOC, nebo baterii vůbec „nevidí".</p>
-            <p>Nejčastější příčiny: vadný nebo špatně zapojený CAN/RJ45 kabel mezi baterií a měničem, špatně nastavený komunikační protokol (Soluna / Pylon / jiný), neaktualizovaný firmware měniče nebo BMS.</p>
-            <span class="meta err">Potřebuje servis</span>
-          </div>
-        </div>
-        <div class="led-row">
-          <span class="led-dot yellow"></span>
-          <div class="led-info">
-            <b>Žlutá — Alarm / nízké SOC</b>
-            <p>BMS hlásí <strong style="color:var(--text);">3. úroveň alarmu</strong> — typicky přepětí nebo podpětí článku, vysoká nebo nízká teplota modulu, nadproud, případně <strong style="color:var(--text);">extrémně nízký stav nabití</strong> (low SOC).</p>
-            <span class="meta warn">Vyžaduje diagnostiku</span>
-          </div>
-        </div>
-        <div class="led-row">
           <span class="led-dot white"></span>
           <div class="led-info">
             <b>Bílá — Provoz / Master</b>
@@ -1280,6 +1254,32 @@
             <b>Zelená — Baterie v paralelním zapojení</b>
             <p>Baterie pracuje jako <strong style="color:var(--text);">podřízená (slave)</strong> jednotka v paralelním zapojení přes HV Parallel Box. Komunikaci s měničem za ni vede master baterie (bílá LED).</p>
             <span class="meta ok">Vše v pořádku</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot yellow"></span>
+          <div class="led-info">
+            <b>Žlutá — Alarm / nízké SOC</b>
+            <p>BMS hlásí <strong style="color:var(--text);">3. úroveň alarmu</strong> — typicky přepětí nebo podpětí článku, vysoká nebo nízká teplota modulu, nadproud, případně <strong style="color:var(--text);">extrémně nízký stav nabití</strong> (low SOC).</p>
+            <span class="meta warn">Vyžaduje diagnostiku</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot purple"></span>
+          <div class="led-info">
+            <b>Fialová — Bez komunikace s měničem</b>
+            <p>Baterie ztratila komunikaci s hybridním střídačem na déle než <strong style="color:var(--text);">5 minut</strong>. Měnič v aplikaci buď ukazuje 0 % SOC, nebo baterii vůbec „nevidí".</p>
+            <p>Nejčastější příčiny: vadný nebo špatně zapojený CAN/RJ45 kabel mezi baterií a měničem, špatně nastavený komunikační protokol (Soluna / Pylon / jiný), neaktualizovaný firmware měniče nebo BMS.</p>
+            <span class="meta err">Potřebuje servis</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot red"></span>
+          <div class="led-info">
+            <b>Červená — Black start mode</b>
+            <p>Baterie startuje bez napájení ze sítě i bez fotovoltaiky. Tento režim spustíte <strong style="color:var(--text);">dlouhým stiskem black-start tlačítka (cca 10 sekund)</strong> na boku baterie. Po aktivaci dokáže baterie sama napájet hybridní měnič a obnovit komunikaci s ním i v plně odpojené síti.</p>
+            <p>Typické využití: po hluboké výpadku sítě, po dlouhodobém odpojení, nebo při prvním uvedení do provozu, když ještě nevidí PV a měnič není napájený.</p>
+            <span class="meta info">Servisní režim</span>
           </div>
         </div>
       </div>
@@ -1369,7 +1369,7 @@
     <div class="contact-aside">
       <p class="eyebrow">Kontakt</p>
       <h2>Máte problém s baterií? <br>Napište nám.</h2>
-      <p>Pošlete nám model baterie, popis závady a ideálně i fotku displeje měniče nebo LED indikace baterie. Odpovíme zpravidla do 24 hodin pracovní den.</p>
+      <p>Pošlete nám model baterie, popis závady a ideálně i fotku displeje měniče nebo LED indikace baterie. Odpovíme zpravidla do 24 hodin v pracovní den.</p>
       <div class="quick">
         <a href="tel:+420776111100">
           <span class="ico">
@@ -1529,7 +1529,7 @@
     if (status) {
       if (params.get('sent') === '1') {
         status.className = 'ok';
-        status.textContent = 'Děkujeme! Vaše zpráva byla odeslána. Ozveme se vám zpravidla do 24 hodin pracovní den.';
+        status.textContent = 'Děkujeme! Vaše zpráva byla odeslána. Ozveme se vám zpravidla do 24 hodin v pracovní den.';
         document.getElementById('kontakt').scrollIntoView({ behavior: 'smooth' });
       } else if (params.get('sent') === '0') {
         status.className = 'err';
