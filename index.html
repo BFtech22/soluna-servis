@@ -451,55 +451,6 @@
   }
   .product .pdf-link:hover { color: #fff; }
 
-  /* LED INDICATOR GRID */
-  .led-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
-  .led-state {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 28px 18px 22px;
-    text-align: center;
-    transition: border-color .2s, transform .2s;
-  }
-  .led-state:hover { border-color: var(--accent); transform: translateY(-3px); }
-  .led-state .led-dot {
-    display: block;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    margin: 0 auto 16px;
-    position: relative;
-  }
-  .led-state .led-dot::after {
-    content: ""; position: absolute; inset: -8px; border-radius: 50%;
-    box-shadow: 0 0 18px 4px currentColor;
-    opacity: 0.5;
-  }
-  .led-state .led-dot.green { background: #2ecc71; color: #2ecc71; }
-  .led-state .led-dot.blue  { background: #3498db; color: #3498db; }
-  .led-state .led-dot.yellow{ background: #f8b500; color: #f8b500; }
-  .led-state .led-dot.red   { background: #e74c3c; color: #e74c3c; }
-  .led-state .led-dot.off   { background: #2a2f3d; color: transparent; border: 2px solid var(--line); }
-  .led-state .led-dot.off::after { display: none; }
-  .led-state .led-dot.blink {
-    animation: blink 1.4s ease-in-out infinite;
-  }
-  @keyframes blink {
-    0%, 60%, 100% { opacity: 1; }
-    30% { opacity: 0.25; }
-  }
-  .led-state .state {
-    display: block;
-    font-size: 13px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 1px;
-    color: var(--text-dim);
-    margin: 0 0 4px;
-  }
-  .led-state .meaning {
-    display: block;
-    font-size: 16px; font-weight: 900;
-    color: var(--text);
-  }
-
   /* PARALLEL BOX FEATURE */
   .feature-pbox {
     display: grid; grid-template-columns: 1fr 1.15fr;
@@ -538,6 +489,60 @@
     border-radius: 8px;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   }
+
+  /* LED status section */
+  .led-section { display: block; max-width: 820px; margin: 0 auto; }
+  .led-list { display: grid; gap: 14px; }
+  .led-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 18px;
+    transition: border-color .2s, transform .2s;
+  }
+  .led-row:hover { border-color: var(--accent); transform: translateX(2px); }
+  .led-dot {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: inset 0 -3px 8px rgba(0,0,0,0.2);
+  }
+  .led-dot.red    { background: #e74c3c; }
+  .led-dot.purple { background: #b25cd6; }
+  .led-dot.yellow { background: #f8b500; }
+  .led-dot.white  { background: #f0f0f0; }
+  .led-dot.green  { background: #2ecc71; }
+  .led-info b {
+    display: block;
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 4px;
+  }
+  .led-info p { color: var(--text-dim); font-size: 14px; line-height: 1.55; margin: 0 0 8px; }
+  .led-info p:last-child { margin-bottom: 0; }
+  .led-info .meta {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+  }
+  .led-info .meta.ok { background: rgba(46,204,113,0.12); color: #5ed694; border: 1px solid rgba(46,204,113,0.35); }
+  .led-info .meta.warn { background: rgba(248,181,0,0.12); color: var(--accent); border: 1px solid rgba(248,181,0,0.35); }
+  .led-info .meta.err { background: rgba(231,76,60,0.12); color: #ff8a78; border: 1px solid rgba(231,76,60,0.35); }
+  .led-info .meta.info { background: rgba(178,92,214,0.12); color: #c98be0; border: 1px solid rgba(178,92,214,0.35); }
+  .led-row { padding: 18px 22px; align-items: flex-start; }
+  .led-dot { margin-top: 4px; }
 
   /* PBOX schema */
   .pbox-schema {
@@ -752,6 +757,33 @@
     background: rgba(248,181,0,0.05);
   }
   .contact-form textarea { resize: vertical; min-height: 130px; }
+  /* Force dropdown options to be readable on every OS / system theme.
+     Without this, macOS/Windows in light mode render light-gray text on a near-white
+     background, making the list almost invisible. */
+  .contact-form select {
+    color-scheme: dark;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image:
+      linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+      linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+    background-position:
+      calc(100% - 20px) center,
+      calc(100% - 14px) center;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 36px;
+  }
+  .contact-form select option {
+    background: #161922;
+    color: #e8ebf2;
+    font-weight: 600;
+  }
+  .contact-form select option:checked,
+  .contact-form select option:hover {
+    background: var(--accent);
+    color: #000;
+  }
   .contact-form .gdpr {
     color: var(--text-dim);
     font-size: 12px; line-height: 1.55;
@@ -862,13 +894,12 @@
 
   /* RESPONSIVE */
   @media (max-width: 980px) {
-    .hero-grid, .feature-pbox, .about-grid { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+    .hero-grid, .feature-pbox, .about-grid { grid-template-columns: 1fr; gap: 36px; }
     .hero-grid .badge-row { margin-left: auto; margin-right: auto; }
     .hero-grid p.lead { margin-left: auto; margin-right: auto; }
     .hero-grid .cta-row { justify-content: center; }
     .hero-cover { order: -1; }
     .hero-cover img { max-width: 420px; }
-    .led-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
     .hero-visual { max-width: 520px; margin: 0 auto; }
     .cards { grid-template-columns: 1fr 1fr; gap: 18px; }
     .products-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -955,6 +986,7 @@
       <a href="#sluzby">Služby</a>
       <a href="#produkty">Produkty</a>
       <a href="#parallel-box">Parallel Box</a>
+      <a href="#stav-baterie">Stav LED</a>
       <a href="#o-nas">O nás</a>
       <a href="#dokumenty">Datasheety</a>
       <a href="#kontakt">Kontakt</a>
@@ -975,6 +1007,7 @@
   <a href="#sluzby">Služby</a>
   <a href="#produkty">Produkty</a>
   <a href="#parallel-box">Parallel Box</a>
+  <a href="#stav-baterie">Stav LED</a>
   <a href="#o-nas">O nás</a>
   <a href="#dokumenty">Datasheety</a>
   <a href="#kontakt">Kontakt</a>
@@ -1174,52 +1207,15 @@
   </div>
 </section>
 
-<!-- LED DIAGNOSTIKA -->
-<section class="block" id="led">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">LED diagnostika</p>
-      <h2>Stav baterie podle LED indikátoru</h2>
-      <p>Pošlete nám fotku LED panelu — z barvy a způsobu blikání obvykle hned poznáme, kde se závada bere.</p>
-    </div>
-    <div class="led-grid">
-      <div class="led-state">
-        <span class="led-dot green"></span>
-        <span class="state">Zelená trvale</span>
-        <span class="meaning">Provoz OK</span>
-      </div>
-      <div class="led-state">
-        <span class="led-dot blue blink"></span>
-        <span class="state">Modrá pulzující</span>
-        <span class="meaning">Nabíjení</span>
-      </div>
-      <div class="led-state">
-        <span class="led-dot yellow blink"></span>
-        <span class="state">Žlutá pulzující</span>
-        <span class="meaning">Standby</span>
-      </div>
-      <div class="led-state">
-        <span class="led-dot red blink"></span>
-        <span class="state">Červená blikající</span>
-        <span class="meaning">Chyba / porucha</span>
-      </div>
-      <div class="led-state">
-        <span class="led-dot off"></span>
-        <span class="state">Bez svícení</span>
-        <span class="meaning">Bez napájení</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- PARALLEL BOX DETAIL -->
 <section class="block" id="parallel-box" style="background: var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="container feature-pbox">
     <div>
       <p class="eyebrow">HV Parallel Box</p>
-      <h3>Až <span>4 baterie</span> na jeden měnič. Až <span>60 kWh</span> na fázi.</h3>
-      <p>Soluna HV Parallel Box je sběrná jednotka, která umožňuje paralelně propojit až čtyři HV Pack baterie 10K nebo 15K na jeden vstup hybridního měniče. Tím získáte výrazně větší kapacitu úložiště bez nutnosti druhého střídače.</p>
-      <p>Box má vlastní komunikační logiku, která mezi sebou synchronizuje BMS jednotlivých baterií, sleduje SOC a teplotu a hlásí stavy nadřazenému měniči.</p>
+      <h3>Jeden měnič, až <span>60 kWh</span> úložiště.</h3>
+      <p>HV Parallel Box je sběrná jednotka, která propojí <strong style="color:var(--text);">až 4 baterie</strong> Soluna HV Pack 10K nebo 15K do jednoho vstupu hybridního střídače. Získáte tak několikanásobnou kapacitu úložiště, aniž byste museli pořizovat druhý měnič.</p>
+      <p>Box má vlastní komunikační logiku — synchronizuje BMS jednotlivých baterií, sleduje SOC a teplotu, vybere master baterii a hlásí stavy nadřazenému měniči.</p>
       <ul>
         <li>Diagnostika výpadku komunikace RJ45 mezi packy</li>
         <li>Výměna interní řídicí elektroniky boxu</li>
@@ -1229,6 +1225,64 @@
     </div>
     <div class="pbox-photo">
       <img src="foto/parallel-box.jpg" alt="Soluna HV Pack Parallel Box" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- LED STATUS -->
+<section class="block" id="stav-baterie">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Stav baterie</p>
+      <h2>Co vám LED dioda na baterii říká</h2>
+      <p>Každá baterie Soluna má na boční straně jednu RGB diodu, která barvou hlásí, v jakém režimu se nachází. Tady je překlad pěti základních stavů — pokud máte jinou barvu nebo chybu, ozvěte se nám.</p>
+    </div>
+    <div class="led-section">
+      <div class="led-list">
+        <div class="led-row">
+          <span class="led-dot red"></span>
+          <div class="led-info">
+            <b>Červená — Black start mode</b>
+            <p>Baterie startuje bez napájení ze sítě i bez fotovoltaiky. Tento režim spustíte <strong style="color:var(--text);">dlouhým stiskem black-start tlačítka (cca 10 sekund)</strong> na boku baterie. Po aktivaci dokáže baterie sama napájet hybridní měnič a obnovit komunikaci s ním i v plně odpojené síti.</p>
+            <p>Typické využití: po hluboké výpadku sítě, po dlouhodobém odpojení, nebo při prvním uvedení do provozu, když ještě nevidí PV a měnič není napájený.</p>
+            <span class="meta info">Servisní režim</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot purple"></span>
+          <div class="led-info">
+            <b>Fialová — Bez komunikace s měničem</b>
+            <p>Baterie ztratila komunikaci s hybridním střídačem na déle než <strong style="color:var(--text);">5 minut</strong>. Měnič v aplikaci buď ukazuje 0 % SOC, nebo baterii vůbec „nevidí".</p>
+            <p>Nejčastější příčiny: vadný nebo špatně zapojený CAN/RJ45 kabel mezi baterií a měničem, špatně nastavený komunikační protokol (Soluna / Pylon / jiný), neaktualizovaný firmware měniče nebo BMS.</p>
+            <span class="meta err">Potřebuje servis</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot yellow"></span>
+          <div class="led-info">
+            <b>Žlutá — Alarm / nízké SOC</b>
+            <p>BMS hlásí <strong style="color:var(--text);">3. úroveň alarmu</strong> — typicky přepětí nebo podpětí článku, vysoká nebo nízká teplota modulu, nadproud, případně <strong style="color:var(--text);">extrémně nízký stav nabití</strong> (low SOC).</p>
+            <span class="meta warn">Vyžaduje diagnostiku</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot white"></span>
+          <div class="led-info">
+            <b>Bílá — Provoz / Master</b>
+            <p>Baterie pracuje v normálním provozním režimu — nabíjí se nebo vybíjí podle pokynů měniče.</p>
+            <p>V <strong style="color:var(--text);">instalaci s jednou baterií</strong> svítí bílá vždy. V <strong style="color:var(--text);">paralelní instalaci přes HV Parallel Box</strong> bílá označuje <strong style="color:var(--text);">master (host)</strong> jednotku — tedy tu baterii, která komunikuje přímo s měničem a řídí ostatní packy.</p>
+            <span class="meta ok">Vše v pořádku</span>
+          </div>
+        </div>
+        <div class="led-row">
+          <span class="led-dot green"></span>
+          <div class="led-info">
+            <b>Zelená — Baterie v paralelním zapojení</b>
+            <p>Baterie pracuje jako <strong style="color:var(--text);">podřízená (slave)</strong> jednotka v paralelním zapojení přes HV Parallel Box. Komunikaci s měničem za ni vede master baterie (bílá LED).</p>
+            <span class="meta ok">Vše v pořádku</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1376,7 +1430,6 @@
             <option>Soluna HV Pack 10K</option>
             <option>Soluna HV Pack 15K</option>
             <option>HV Parallel Box</option>
-            <option>HV Active Balancer</option>
             <option>Jiný model / nevím</option>
           </select>
         </div>
@@ -1425,6 +1478,7 @@
         <a href="#sluzby">Služby</a>
         <a href="#produkty">Produkty</a>
         <a href="#parallel-box">Parallel Box</a>
+        <a href="#stav-baterie">Stav LED</a>
         <a href="#o-nas">O nás</a>
         <a href="#dokumenty">Datasheety</a>
         <a href="#kontakt">Kontakt</a>
